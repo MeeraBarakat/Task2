@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+.progreddContainer{
+height :20px;
+width: 500px;
+background-color: gainsboro;
+border-radius: 50px;
+margin-top: 50px;
+margin-left: 100px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.innerContainer{
+  height: 100%;
+  border-radius: 50px;
+  text-align: right;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.percentage{
+  margin: 10px;
   color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.myRoot{
+  width: 300px;
+  height: 100vh;
+  background-color: gainsboro;
+  position: absolute;
+  right: 0;
+  top:0
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.addP{
+  border-radius: 20px;
+  font-family: 'Brush Script MT', cursive;
+  width: 250px;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+label{
+  font-family: 'Brush Script MT', cursive;
+  margin-right: 10px;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+/* :root {
+  --input-border: #8b8a8b;
+  --input-focus-h: 245;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
+
+} */
+
+input{
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
 }
