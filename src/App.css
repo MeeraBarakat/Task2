@@ -1,63 +1,68 @@
-.progreddContainer{
-height :20px;
-width: 500px;
+.progressContainer{
+height :10px;
+width: 40vw;
 background-color: gainsboro;
 border-radius: 50px;
 margin-top: 50px;
-margin-left: 100px;
+position: relative;
+left:10vw
 }
 
 .innerContainer{
   height: 100%;
   border-radius: 50px;
-  text-align: right;
 }
 
-.percentage{
-  margin: 10px;
-  color: white;
-  font-weight: bold;
-}
-
-.myRoot{
-  width: 300px;
-  height: 100vh;
-  background-color: gainsboro;
+.details{
+  color: black;
   position: absolute;
   right: 0;
-  top:0
-}
-
-
-.addP{
-  border-radius: 20px;
+  top:-22px;
   font-family: 'Brush Script MT', cursive;
-  width: 250px;
-  margin-left: 20px;
-  margin-top: 30px;
 }
 
-label{
-  font-family: 'Brush Script MT', cursive;
-  margin-right: 10px;
-  margin-top: 40px;
-  margin-left: 20px;
+.formContainer{
+  width: 300px;
+  min-width: 300px;
+  height: 100vh;
+  background-color: rgb(238, 235, 235);
+  position: absolute;
+  right: 0;
+  top:0;
+  z-index: 1;
 }
-
-/* :root {
-  --input-border: #8b8a8b;
-  --input-focus-h: 245;
-  --input-focus-s: 100%;
-  --input-focus-l: 42%;
-
-} */
 
 input{
   font-size: 16px;
-  font-size: max(16px, 1em);
-  font-family: inherit;
-  padding: 0.25em 0.5em;
+  width:230px;
+  padding: 6px;
   background-color: #fff;
-  border: 2px solid var(--input-border);
-  border-radius: 4px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  margin: 25px;
+  margin-bottom: 0;
+  font-family: 'Brush Script MT', cursive;
+}
+
+button{
+  width: 250px;
+  height: 30px;
+  margin: 25px;
+  color: dodgerblue;
+  border: 2px solid #2196F3;
+  background-color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Brush Script MT', cursive;
+}
+
+button:hover{
+  background-color: rgb(44, 44, 236);
+  color: white;
+}
+
+button:disabled{
+  background-color:grey;
+  color: black;
+  border: 0;
 }

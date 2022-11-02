@@ -1,55 +1,64 @@
 import './App.css';
 import React,{useEffect, useState,useRef} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ProgressBar = (props) => {
+const ProgressBar = ({bar}) => {
   const [progress,setProgress] = useState(0);
 
-   
-    useEffect(()=>{
-      
-setTimeout(function(props) {
-  if(progress<100)
-  {
-    setProgress(progress+10)
-  }
-}, 1000);
-    },[progress]);
+  useEffect(()=>{
+    if(progress<100)
+    {
+      setTimeout(()=>setProgress(progress+10), 1000)
+    }
+},[progress]);
  
   return (
-    <div className='progreddContainer'>   
-  <div className='innerContainer' style={{width:`${progress}%`,  backgroundColor: `${props.item.barColor}`}} >
-  <span className='percentage'>{`${progress}%`}</span>
+    <div className='progressContainer'>   
+      <span className='details'>{progress}%</span>
+      <span className='details' style={{left: '0'}}>{bar.title}</span>
+  <div className='innerContainer' style={{width:`${progress}%`,  backgroundColor: `${bar.barColor}`}} >
   </div>
 </div>
   );
-};
+
+}
 
 function App() {
-  const [bars,setBars] = useState([{barColor:"red"}]);
-  const inColor=useRef('');
+  const [bars,setBars] = useState([{barColor:"green",title:'Page'}]);
+  const [error,setError] = useState('');
+  const color=useRef('');
+  const title=useRef('');
 
   function handleClick(){
-    console.log();
-    setBars(bars =>[...bars,{barColor:inColor.current.value}])
-    console.log(bars.length)
+    if(color.current.value==='')
+    color.current.value='green';
+    setBars(bars =>[...bars,{barColor:color.current.value,title:title.current.value}])
+  }
+
+  function isColor(strColor){
+  var s = new Option().style;
+  s.color = strColor;
+  return s.color === strColor;
+}
+
+  function handleColor(){
+    if(isColor(color.current.value)===false)
+    {
+      setError(true);
+    }
+    else setError(false);
   }
 
   return (
-    <div>
-    <div className='myRoot'>
-    <label>Color:</label>
-    <input ref={inColor}></input>
-    <label>Title:</label>
-    <input ref={inColor}></input>
-    <button className="btn btn-outline-primary btn-sm addP" onClick={handleClick}>Add progress</button>
+    <>
+    <div className='formContainer'>
+    <input placeholder='Title' ref={title}></input>
+    <input onChange={handleColor} placeholder='Color' ref={color}></input>
+    <button disabled={error} onClick={handleClick}>Add</button>
     </div>
-     <div>
-    {bars.map(item=>(
-    <ProgressBar item={item} />
+    {bars.map((bar,idx)=>(
+    <ProgressBar key={idx} bar={bar} />
     ))}
-    </div>
-    </div>
+    </>
   );
 }
 
