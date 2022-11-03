@@ -27,25 +27,21 @@ function App() {
   const [error,setError] = useState('');
   const color=useRef('');
   const title=useRef('');
+  var s = new Option().style;
 
   function handleClick(){
     if(color.current.value==='')
-    color.current.value='green';
-    setBars(bars =>[...bars,{barColor:color.current.value,title:title.current.value}])
+    setBars(bars =>[...bars,{barColor:'green',title:title.current.value}])
+    else setBars(bars =>[...bars,{barColor:color.current.value,title:title.current.value}])
   }
 
-  function isColor(strColor){
-  var s = new Option().style;
-  s.color = strColor;
-  return s.color === strColor;
-}
-
   function handleColor(){
-    if(isColor(color.current.value)===false)
+    s.color=color.current.value;
+    if(s.color === color.current.value)
     {
-      setError(true);
+      setError(false);
     }
-    else setError(false);
+    else setError(true);
   }
 
   return (
