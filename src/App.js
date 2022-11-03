@@ -1,43 +1,28 @@
 import './App.css';
-import React,{useEffect, useState,useRef} from 'react';
-
-const ProgressBar = ({bar}) => {
-  const [progress,setProgress] = useState(0);
-
-  useEffect(()=>{
-    if(progress<100)
-    {
-      setTimeout(()=>setProgress(progress+10), 1000)
-    }
-},[progress]);
- 
-  return (
-    <div className='progressContainer'>   
-      <span className='details'>{progress}%</span>
-      <span className='details' style={{left: '0'}}>{bar.title}</span>
-  <div className='innerContainer' style={{width:`${progress}%`,  backgroundColor: `${bar.barColor}`}} >
-  </div>
-</div>
-  );
-
-}
+import React,{useState} from 'react';
+import ProgressBar from './components/ProgressBar';
+import map from "lodash/map"
 
 function App() {
   const [bars,setBars] = useState([{barColor:"green",title:'Page'}]);
   const [error,setError] = useState('');
-  const color=useRef('');
-  const title=useRef('');
+  const [color,setColor] = useState('');
+  const [title,setTitle] = useState('');
   var s = new Option().style;
 
   function handleClick(){
-    if(color.current.value==='')
-    setBars(bars =>[...bars,{barColor:'green',title:title.current.value}])
-    else setBars(bars =>[...bars,{barColor:color.current.value,title:title.current.value}])
+    if(color==='')
+    {
+      setColor('green')
+      setBars(bars =>[...bars,{barColor:'green',title:title}])
+    }
+    else setBars(bars =>[...bars,{barColor:color,title:title}])
   }
 
-  function handleColor(){
-    s.color=color.current.value;
-    if(s.color === color.current.value)
+  function handleColor(inColor){
+    setColor(inColor)
+    s.color=inColor;
+    if(s.color === inColor)
     {
       setError(false);
     }
@@ -46,14 +31,15 @@ function App() {
 
   return (
     <>
-    <div className='formContainer'>
-    <input placeholder='Title' ref={title}></input>
-    <input onChange={handleColor} placeholder='Color' ref={color}></input>
-    <button disabled={error} onClick={handleClick}>Add</button>
+    <div className='form-container'>
+    <input onChange={(event)=>{setTitle(event.target.value)}} placeholder='Title'></input>
+    <input onChange={(event)=>handleColor(event.target.value)} placeholder='Color'></input>
+    <button className='add-button' disabled={error} onClick={handleClick}>Add</button>
     </div>
-    {bars.map((bar,idx)=>(
-    <ProgressBar key={idx} bar={bar} />
-    ))}
+    {
+       map(bars,(bar,idx)=>(
+        <ProgressBar key={idx} bar={bar} />))
+    }
     </>
   );
 }

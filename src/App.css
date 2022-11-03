@@ -1,4 +1,4 @@
-.progressContainer{
+.progress-container{
 height :10px;
 width: 40vw;
 background-color: gainsboro;
@@ -8,7 +8,7 @@ position: relative;
 left:10vw
 }
 
-.innerContainer{
+.inner-container{
   height: 100%;
   border-radius: 50px;
 }
@@ -21,7 +21,7 @@ left:10vw
   font-family: 'Brush Script MT', cursive;
 }
 
-.formContainer{
+.form-container{
   width: 300px;
   min-width: 300px;
   height: 100vh;
@@ -44,7 +44,7 @@ input{
   font-family: 'Brush Script MT', cursive;
 }
 
-button{
+.add-button{
   width: 250px;
   height: 30px;
   margin: 25px;
@@ -56,13 +56,19 @@ button{
   font-family: 'Brush Script MT', cursive;
 }
 
-button:hover{
+.add-button:hover{
   background-color: rgb(44, 44, 236);
   color: white;
 }
 
-button:disabled{
+.add-button:disabled{
   background-color:grey;
   color: black;
   border: 0;
+}
+
+.restart-icon{
+position: absolute;
+margin-left: -50px;
+margin-top: -14px;
 }
