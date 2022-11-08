@@ -2,6 +2,7 @@ import './App.css';
 import React,{useState} from 'react';
 import ProgressBar from './components/ProgressBar';
 import map from "lodash/map"
+import {Link, Route,Routes} from 'react-router-dom'
 
 function App() {
   const [bars,setBars] = useState([{barColor:"green",title:'Page'}]);
@@ -31,7 +32,21 @@ function App() {
 
   return (
     <>
-    <div className='form-container'>
+    <nav>
+        <Link to='/'>Home</Link>
+        <Link to='/progress'>progress</Link>
+      </nav>
+    <Routes>
+      
+      <Route path='/' element={<h1>Hello World</h1>}/>
+    <Route path='progress' element={<h1>Progress</h1>}/>
+    
+    </Routes>
+    </>
+  );
+}
+
+{/* <div className='form-container'>
     <input onChange={(event)=>{setTitle(event.target.value)}} placeholder='Title'></input>
     <input onChange={(event)=>handleColor(event.target.value)} placeholder='Color'></input>
     <button className='add-button' disabled={error} onClick={handleClick}>Add</button>
@@ -39,9 +54,6 @@ function App() {
     {
        map(bars,(bar,idx)=>(
         <ProgressBar key={idx} bar={bar} />))
-    }
-    </>
-  );
-}
+    } */}
 
 export default App;
