@@ -1,59 +1,29 @@
 import './App.css';
-import React,{useState} from 'react';
-import ProgressBar from './components/ProgressBar';
-import map from "lodash/map"
-import {Link, Route,Routes} from 'react-router-dom'
+import React, { useState } from 'react';
+import {Route,Routes} from 'react-router-dom'
+import Home from './components/Home';
+import ProgressPage from './components/ProgressPage';
+import ErrorPage from './components/ErrorPage';
+import SharedLayout from './components/SharedLayout';
+import LoginPage from './components/LoginPage';
+import ProfilePage from './components/ProfilePage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-  const [bars,setBars] = useState([{barColor:"green",title:'Page'}]);
-  const [error,setError] = useState('');
-  const [color,setColor] = useState('');
-  const [title,setTitle] = useState('');
-  var s = new Option().style;
-
-  function handleClick(){
-    if(color==='')
-    {
-      setColor('green')
-      setBars(bars =>[...bars,{barColor:'green',title:title}])
-    }
-    else setBars(bars =>[...bars,{barColor:color,title:title}])
-  }
-
-  function handleColor(inColor){
-    setColor(inColor)
-    s.color=inColor;
-    if(s.color === inColor)
-    {
-      setError(false);
-    }
-    else setError(true);
-  }
-
+  const [user,setUser]=useState(null);
   return (
     <>
-    <nav>
-        <Link to='/'>Home</Link>
-        <Link to='/progress'>progress</Link>
-      </nav>
     <Routes>
-      
-      <Route path='/' element={<h1>Hello World</h1>}/>
-    <Route path='progress' element={<h1>Progress</h1>}/>
-    
+      <Route path='/' element={<SharedLayout/>}>
+        <Route index element={<Home/>}/>
+        <Route path='progress' element={<ProgressPage/>}/>
+        <Route path='login' element={<LoginPage setUser={setUser}/>}/>
+        <Route path='profile' element={<ProtectedRoute user={user}><ProfilePage user={user}/></ProtectedRoute>}/>
+        <Route path='*' element={<ErrorPage/>}/>
+      </Route>
     </Routes>
     </>
   );
 }
-
-{/* <div className='form-container'>
-    <input onChange={(event)=>{setTitle(event.target.value)}} placeholder='Title'></input>
-    <input onChange={(event)=>handleColor(event.target.value)} placeholder='Color'></input>
-    <button className='add-button' disabled={error} onClick={handleClick}>Add</button>
-    </div>
-    {
-       map(bars,(bar,idx)=>(
-        <ProgressBar key={idx} bar={bar} />))
-    } */}
 
 export default App;
