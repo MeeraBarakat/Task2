@@ -123,31 +123,41 @@ margin-top: -14px;
 }
 
 .cont{
-  width: 30vw;
-  height:65vh;
+  width: 25vw;
+  min-width: 300px;
+  height:400px;
+  min-height: 400px;
   border-radius: 20px;
   background-color: white;
 }
 
 .logo{
-  margin-left: 140px;
-  margin-top: 60px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 20px;
 }
 
 .form-input{
-  margin-left:60px;
   background-color: rgb(241, 241, 241);
+  height: 30px;
+  width: 80%;
+  margin: 0;
+  margin-top:30px;
+  margin-left: 8%;
 }
 
 .form-button{
-  margin-left:67px;
-  margin-top: 40px;
-  background-color: dodgerblue;
-  border: 2px solid #2196F3;
+  border: 2px solid #60abe7;
+  width: 85%;
+  margin: 0;
+  margin-top:45px;
+  margin-left: 8%;
 }
 
 .Profile{
   width: 100%;
   display: inline-flex;
-   justify-content: flex-end;
+  justify-content: flex-end;
 }
