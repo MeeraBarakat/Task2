@@ -19,7 +19,6 @@ function App() {
     <Routes>
       <Route path='/' element={<SharedLayout/>}>
         <Route index element={<Home/>}/>
-        <Route path='weather' element={<Weather/>}/>
         <Route path='progress' element={<ProgressPage/>}/>   
         <Route path='login' element={<LoginPage/>}/>
         <Route path='profile' element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
