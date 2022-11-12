@@ -8,7 +8,6 @@ import SharedLayout from './components/SharedLayout';
 import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
-import Weather from './components/weather';
 
 export const UserContext=createContext(null);
 
