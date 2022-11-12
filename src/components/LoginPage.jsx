@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {useContext} from 'react'
+import {UserContext} from '../App'
 
-function LoginPage ({setUser}) {
+function LoginPage () {
   const[name,setName]=useState(null);
   const[password,setPassword]=useState(null);
   const navigate=useNavigate(null);
+  const{setUser} =useContext(UserContext);
 
   function onSubmit(event){
     event.preventDefault();

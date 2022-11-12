@@ -1,4 +1,4 @@
-function Home ({bar}) {
+function Home () {
     return (
         <div className="Home"></div>
     );
