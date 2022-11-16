@@ -1,11 +1,10 @@
 import { Navigate } from "react-router-dom";
-import {useContext} from 'react'
-import {UserContext} from '../App'
+import {useSelector} from "react-redux"
+
 
 function ProtectedRoute({children}) {
-    const{user} =useContext(UserContext)
-
-    if(!user){
+    const user= useSelector((state)=>state.user.value)
+     if(!user.name){
         return <Navigate to='/login' />
     }
     return children;

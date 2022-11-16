@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {useContext} from 'react'
-import {UserContext} from '../App'
+import{useDispatch} from "react-redux"
+import {login} from "../features/user"
 
 function LoginPage () {
   const[name,setName]=useState(null);
   const[password,setPassword]=useState(null);
   const navigate=useNavigate(null);
-  const{setUser} =useContext(UserContext);
+  const dispatch=useDispatch();
 
   function onSubmit(event){
     event.preventDefault();
-    if(name!== null && password !== null){
-     setUser({name:name,password:password});
+     dispatch(login({name:name,password:password}))
      navigate('/profile');
-  }
   }
 
     return (

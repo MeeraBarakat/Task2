@@ -3,7 +3,7 @@ import { IoMdRedo } from 'react-icons/io';
 
 function ProgressBar ({bar}) {
     const [progress,setProgress] = useState(0);
-  
+
     useEffect(()=>{
       if(progress<100)
       {
@@ -14,7 +14,7 @@ function ProgressBar ({bar}) {
    
     return (
       <div className='progress-container'> 
-      <h1><IoMdRedo className='restart-icon' onClick={()=>setProgress(0)} /></h1>
+      <h1><IoMdRedo className='restart-icon' onClick={()=>{setProgress(0)}} /></h1>
         <span className='details'>{progress}%</span>
         <span className='details' style={{left: '0'}}>{bar.title}</span>
     <div className='inner-container' style={{width:`${progress}%`,  backgroundColor: `${bar.barColor}`}} >

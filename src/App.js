@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState,createContext } from 'react';
+import React from 'react';
 import {Route,Routes} from 'react-router-dom';
 import Home from './components/Home';
 import ProgressPage from './components/ProgressPage';
@@ -9,12 +9,8 @@ import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
 
-export const UserContext=createContext(null);
-
 function App() {
-  const [user,setUser]=useState(null);
   return (
-    <UserContext.Provider value={{user,setUser}}>
     <Routes>
       <Route path='/' element={<SharedLayout/>}>
         <Route index element={<Home/>}/>
@@ -24,7 +20,6 @@ function App() {
         <Route path='*' element={<ErrorPage/>}/>
       </Route>
     </Routes>
-    </UserContext.Provider>
   );
 }
 
