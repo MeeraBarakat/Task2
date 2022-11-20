@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import{useDispatch} from "react-redux"
-import {login} from "../features/user"
+import {fetchUsers, login} from "../features/user"
 
 function LoginPage () {
   const[name,setName]=useState(null);
@@ -11,7 +11,8 @@ function LoginPage () {
 
   function onSubmit(event){
     event.preventDefault();
-     dispatch(login({name:name,password:password}))
+    //  dispatch(login({name:name,password:password}));
+     dispatch(fetchUsers());
      navigate('/profile');
   }
 

@@ -5,15 +5,15 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit';
-import userReduser from "./features/user"
+import userReduser from "./features/user";
 
 let store=configureStore({
   reducer:{
     user: userReduser
-  }}
-  );
+  }});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <Provider store={store}>
     <BrowserRouter>

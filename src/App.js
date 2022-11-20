@@ -8,6 +8,7 @@ import SharedLayout from './components/SharedLayout';
 import LoginPage from './components/LoginPage';
 import ProfilePage from './components/ProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
+import Users from './components/Users';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='progress' element={<ProgressPage/>}/>   
         <Route path='login' element={<LoginPage/>}/>
         <Route path='profile' element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
+        <Route path='users' element={<Users/>}/>
         <Route path='*' element={<ErrorPage/>}/>
       </Route>
     </Routes>
